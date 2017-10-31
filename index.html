@@ -7,6 +7,7 @@
     <input type="text" name="search" id="form" />
     
     <button id="but">Search</button><br/>
+    <button id="def"> Get all Definitions </button>
     
     <span>Result</span><br/>
     <div id="bottom"></div>
@@ -26,6 +27,32 @@
             xhttp.open("GET", "request.php?q="+fu, true);
             xhttp.send();
         });
+        
+        document.getElementById("def").addEventListener("click", function()
+        {
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() 
+            {
+                if (this.readyState == 4 && this.status == 200) 
+                {
+                    var x = this.responseXML;
+                    console.log(x);
+                    var entry = x.getElementsByTagName("definition");
+                    var text="";
+                    for (var i = 0; i <entry.length; i++) {
+                        text+= entry[i].getAttribute('name') + "<br>";
+                        text+= entry[i].childNodes[0].nodeValue + "<br>";
+                        text+="- " + entry[i].getAttribute('author')+"<br> <br>";
+                    } 
+                    document.getElementById("bottom").innerHTML=text;
+                }
+            };
+            xhttp.open("GET", "request.php?all=true", true);
+            xhttp.send();
+        });
+        
+        
     </script>
 
 
