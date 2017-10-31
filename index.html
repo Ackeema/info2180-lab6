@@ -4,21 +4,26 @@
 <title>Page Title</title>
 </head>
 <body>
+    <input type="text" name="search" id="form" />
     
-    <button id="but">Search</button>
+    <button id="but">Search</button><br/>
+    
+    <span>Result</span><br/>
+    <div id="bottom"></div>
     
     <script>
         document.getElementById("but").addEventListener("click", function()
         {
+            var fu=document.getElementById("form").value;
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() 
             {
                 if (this.readyState == 4 && this.status == 200) 
                 {
-                    alert(this.responseText);
+                    document.getElementById("bottom").innerHTML=this.responseText;
                 }
             };
-            xhttp.open("GET", "request.php?q=definition", true);
+            xhttp.open("GET", "request.php?q="+fu, true);
             xhttp.send();
         });
     </script>
