@@ -18,12 +18,14 @@
             <button id="but"style="background-color:#238ce0; color:#ffffff; border-radius:15%; padding:5px;">Search</button>
             <button id="def" style="background-color:#238ce0; color:#ffffff; border-radius:15%; padding:5px;"> Get all Definitions</button> 
     
-            <div id="result" style="border-top:1px solid grey; position:relative; top:5px; width:95%; margin-left:10px; font-size:7;"> <strong> Result</strong> </br>
+            <div id="result" style="border-top:1px solid grey; position:relative; top:5px; width:95%; margin-left:10px;"> <h3> Result </h3> </br>  </br>
             
             </div>
             <div id="bottom"></div>
+            
 			
-		</div>
+			
+			
 		
     
 		
@@ -45,20 +47,24 @@
         
         document.getElementById("def").addEventListener("click", function()
         {
-            
+           var list = document.createElement('ol');
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() 
             {
                 if (this.readyState == 4 && this.status == 200) 
                 {
+                    
                     var x = this.responseXML;
                     console.log(x);
                     var entry = x.getElementsByTagName("definition");
                     var text="";
                     for (var i = 0; i <entry.length; i++) {
+                        var definition =document.createElement('li');
                         text+= entry[i].getAttribute('name') + "<br>";
                         text+= entry[i].childNodes[0].nodeValue + "<br>";
                         text+="- " + entry[i].getAttribute('author')+"<br> <br>";
+                        definition.append(text);
+                        list.appendChild(definition);
                     } 
                     document.getElementById("bottom").innerHTML=text;
                 }
