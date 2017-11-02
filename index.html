@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+<title>Definition</title>
 </head>
 <body>
-    <input type="text" name="search" id="form" />
     
-    <button id="but">Search</button><br/>
-    <button id="def"> Get all Definitions </button>
+     <div style="background-color:green; height:100px;" >
+			<h1 style="position:relative; top:30px; left:20px;">Web Dictionary </h1>
+		</div>
+		<div style="background-color:#d0dcd0; height:1000px; position:relative; bottom:10px;" >
+			<p style="margin-left:10px;">
+				Look up the definition of a word e.g.  ajax, bar, html, css, javscript or php
+			</p>
+			
+			 <input type="text" name="search" id="form" style="padding:10px; width:10%;"/>
     
-    <span>Result</span><br/>
-    <div id="bottom"></div>
+            <button id="but"style="background-color:#238ce0; color:#ffffff; border-radius:15%; padding:5px;">Search</button>
+            <button id="def" style="background-color:#238ce0; color:#ffffff; border-radius:15%; padding:5px;"> Get all Definitions</button> 
     
+            <div id="result" style="border-top:1px solid grey; position:relative; top:5px; width:95%; margin-left:10px; font-size:7;"> <strong> Result</strong> </br>
+            
+            </div>
+            <div id="bottom"></div>
+			
+		</div>
+		
+    
+		
     <script>
         document.getElementById("but").addEventListener("click", function()
         {
